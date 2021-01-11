@@ -28,6 +28,7 @@
  * SPI SCK     SCK          13 / ICSP-3   52        D13        ICSP-3           15
  */
 
+// BASIC FOR ARDUINO UNO
 #include <SPI.h>
 #include <MFRC522.h>
 
@@ -38,7 +39,7 @@ MFRC522 rfid(SS_PIN, RST_PIN); // Instance of the class
 
 MFRC522::MIFARE_Key key; 
 
-char kartu = "XX";
+//char kartu = "XX";
 
 // Init array that will store new NUID 
 byte nuidPICC[4];
@@ -93,9 +94,15 @@ void loop() {
    
     Serial.print(F("NUID kartu adalah: "));
     printHex(rfid.uid.uidByte, rfid.uid.size);
-    //kartu = printHex(rfid.uid.uidByte, 4);
     Serial.println();
-    Serial.println(kartu);
+    Serial.print(rfid.uid.uidByte[0], HEX);
+    Serial.print("-");
+    Serial.print(rfid.uid.uidByte[1], HEX);
+    Serial.print("-");
+    Serial.print(rfid.uid.uidByte[2], HEX);
+    Serial.print("-");
+    Serial.print(rfid.uid.uidByte[3], HEX);
+    Serial.println("");
 
   } else {
     Serial.println("Kartu sudah discan");
