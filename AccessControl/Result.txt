@@ -1,0 +1,86 @@
+Access Control Example v0.1
+MFRC522 Software Version: 0x92 = v2.0
+-------------------
+Master Card's UID
+2312461B
+-------------------
+Everything is ready
+Waiting PICCs to be scanned
+Scanned PICC's UID:
+2312461B
+Hello Master - Entered Program Mode
+I have 1 record(s) on EEPROM
+Scan a PICC to ADD or REMOVE to EEPROM
+Scan Master Card again to Exit Program Mode
+-----------------------------
+Scanned PICC's UID:
+2312461B
+Master Card Scanned
+Exiting Program Mode
+-----------------------------
+Scanned PICC's UID:
+2312461B
+Hello Master - Entered Program Mode
+I have 1 record(s) on EEPROM
+Scan a PICC to ADD or REMOVE to EEPROM
+Scan Master Card again to Exit Program Mode
+-----------------------------
+Scanned PICC's UID:
+2312461B
+Master Card Scanned
+Exiting Program Mode
+-----------------------------
+Scanned PICC's UID:
+2312461B
+Hello Master - Entered Program Mode
+I have 1 record(s) on EEPROM
+Scan a PICC to ADD or REMOVE to EEPROM
+Scan Master Card again to Exit Program Mode
+-----------------------------
+Scanned PICC's UID:
+2312461B
+Master Card Scanned
+Exiting Program Mode
+-----------------------------
+Scanned PICC's UID:
+2312461B
+Hello Master - Entered Program Mode
+I have 1 record(s) on EEPROM
+Scan a PICC to ADD or REMOVE to EEPROM
+Scan Master Card again to Exit Program Mode
+-----------------------------
+Scanned PICC's UID:
+F9CA1663
+I do not know this PICC, adding...
+Succesfully added ID record to EEPROM
+-----------------------------
+Scan a PICC to ADD or REMOVE to EEPROM
+Scanned PICC's UID:
+F9CA1663
+I do not know this PICC, adding...
+Succesfully added ID record to EEPROM
+-----------------------------
+Scan a PICC to ADD or REMOVE to EEPROM
+Scanned PICC's UID:
+F9CA1663
+I know this PICC, removing...
+Succesfully removed ID record from EEPROM
+-----------------------------
+Scan a PICC to ADD or REMOVE to EEPROM
+Scanned PICC's UID:
+F9CA1663
+I do not know this PICC, adding...
+Succesfully added ID record to EEPROM
+-----------------------------
+Scan a PICC to ADD or REMOVE to EEPROM
+Scanned PICC's UID:
+F9CA1663
+I know this PICC, removing...
+Succesfully removed ID record from EEPROM
+-----------------------------
+Scan a PICC to ADD or REMOVE to EEPROM
+Scanned PICC's UID:
+2312461B
+Master Card Scanned
+Exiting Program Mode
+-----------------------------
