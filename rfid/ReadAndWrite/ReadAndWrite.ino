@@ -52,10 +52,10 @@ void setup() {
         key.keyByte[i] = 0xFF;
     }
 
-    Serial.println(F("Scan a MIFARE Classic PICC to demonstrate read and write."));
-    Serial.print(F("Using key (for A and B):"));
-    dump_byte_array(key.keyByte, MFRC522::MF_KEY_SIZE);
-    Serial.println();
+      Serial.println(F("Scan a MIFARE Classic PICC to demonstrate read and write."));
+      Serial.print(F("Using key (for A and B):"));
+      dump_byte_array(key.keyByte, MFRC522::MF_KEY_SIZE);
+      Serial.println();
 
     Serial.println(F("BEWARE: Data will be written to the PICC, in sector #1"));
 }
