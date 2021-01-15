@@ -1,23 +1,26 @@
-https://randomnerdtutorials.com/security-access-using-mfrc522-rfid-reader-with-arduino/
-
 /*
- *  Created by TheCircuit
-*/
-
-#define SS_PIN 4  //D2
-#define RST_PIN 5 //D1
-
+ * 
+ * All the resources for this project: https://www.hackster.io/Aritro
+ * Modified by Aritro Mukherjee
+ * 
+ * 
+ */
+ 
 #include <SPI.h>
 #include <MFRC522.h>
-
+ 
+#define SS_PIN 10
+#define RST_PIN 9
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
-int statuss = 0;
-int out = 0;
+ 
 void setup() 
 {
   Serial.begin(9600);   // Initiate a serial communication
   SPI.begin();      // Initiate  SPI bus
   mfrc522.PCD_Init();   // Initiate MFRC522
+  Serial.println("Approximate your card to the reader...");
+  Serial.println();
+
 }
 void loop() 
 {
@@ -32,8 +35,7 @@ void loop()
     return;
   }
   //Show UID on serial monitor
-  Serial.println();
-  Serial.print(" UID tag :");
+  Serial.print("UID tag :");
   String content= "";
   byte letter;
   for (byte i = 0; i < mfrc522.uid.size; i++) 
@@ -43,20 +45,18 @@ void loop()
      content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
      content.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
-  content.toUpperCase();
   Serial.println();
-  if (content.substring(1) == "8E 39 32 50") //change UID of the card that you want to give access
+  Serial.print("Message : ");
+  content.toUpperCase();
+  if (content.substring(1) == "0A 2A 47 D0") //change here the UID of the card/cards that you want to give access
   {
-    Serial.println(" Access Granted ");
-    Serial.println(" Welcome Mr.Circuit ");
-    delay(1000);
-    Serial.println(" Have FUN ");
+    Serial.println("Authorized access");
     Serial.println();
-    statuss = 1;
+    delay(3000);
   }
-  
-  else   {
-    Serial.println(" Access Denied ");
+ 
+ else   {
+    Serial.println(" Access denied");
     delay(3000);
   }
 } 
