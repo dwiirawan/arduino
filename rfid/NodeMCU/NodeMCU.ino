@@ -121,7 +121,7 @@ void loop() {
       } // end if hhtpCode
       
     http.end();
-    } // End if Wifi Status  
+    } // End if Wifi Status
  
   } else {
     Serial.println("Kartu sudah discan");
@@ -136,4 +136,5 @@ void loop() {
   // Stop encryption on PCD
   rfid.PCD_StopCrypto1();
 
+ delay(2000);
 } // End loop

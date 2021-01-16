@@ -1,37 +1,57 @@
+/***************************
+
+Membaca E-KTP (KTP Elektronik) dengan RFID Reader RC522 Berbasis Arduino Uno
+
+Oleh : Arduino Indonesia
+Website : www.arduinoindonesia.id
+Toko Online : www.workshopelectronics3in1.com
+Blog : www.edukasielektronika.com
+
+Copyright @2020
+
+****************************/
+
+
 #include <SPI.h>
-#include <MFRC522.h>
-#define pinSDA 10
-#define pinRST 9
-MFRC522 RFID(pinSDA, pinRST);
-void setup() {
-  Serial.begin(9600);
+#include <RFID.h>
+#define SDA_PIN D4 //10
+#define RST_PIN D3 //9
+RFID rfid(SDA_PIN,RST_PIN);
+
+int serNum[5];          //Variable buffer Scan Card
+
+void setup()
+{
+  Serial.begin(9600);                      
   SPI.begin();
-  RFID.PCD_Init();
-  Serial.println("RFID Reader");
+  rfid.init();
+  delay(1000);
+  Serial.println("Sistem Pembacaan E-KTP Ready...");
+  delay(2000);
+  Serial.println("Tempelkan E-KTP Anda");
   Serial.println("");
-  Serial.println("Tap Kartu/Gantungan !");
-  Serial.println();
 }
-void loop() {
-  if ( ! RFID.PICC_IsNewCardPresent()) {
-    return;
+
+void loop()
+{
+  if(rfid.isCard())
+  {
+    if(rfid.readCardSerial())
+    {
+      Serial.print("Kode Tag E-KTP");
+      Serial.print(" : ");
+      Serial.print(rfid.serNum[0], HEX);
+      Serial.print(" ");
+      Serial.print(rfid.serNum[1], HEX);
+      Serial.print(" ");
+      Serial.print(rfid.serNum[2], HEX);
+      Serial.print(" ");
+      Serial.print(rfid.serNum[3], HEX);
+      Serial.print(" ");
+      Serial.print(rfid.serNum[4], HEX);
+      Serial.println("");
+    }
   }
-  if ( ! RFID.PICC_ReadCardSerial()) {
-    return;
-  }
-  Serial.print("ID Tag :");
-  String content = "";
-  byte letter;
-  for (byte i = 0; i < RFID.uid.size; i++) {
-    
-    Serial.print(RFID.uid.uidByte[i] < 0x10 ? " 0" : " ");
-    Serial.print(RFID.uid.uidByte[i], HEX);
-    content.concat(String(RFID.uid.uidByte[i] < 0x10 ? " 0" : " "));
-    content.concat(String(RFID.uid.uidByte[i], HEX));
-  }
-  Serial.println();
-  
-  content = String(RFID.uid.uidByte[0], HEX) + String(RFID.uid.uidByte[1], HEX) + String(RFID.uid.uidByte[2], HEX) + String(RFID.uid.uidByte[3], HEX);
-  Serial.println(content);
-  delay(1500);
+  rfid.halt();
+  delay(1000);
 }
