@@ -26,7 +26,7 @@ void setup() {
   //printHex(key.keyByte, MFRC522::MF_KEY_SIZE);
   
   // Connect Wifi
-  WiFi.begin("Accounting", "munculgroup");
+  WiFi.begin("Redmi 5", "internet");
   
   Serial.println("");
   while (WiFi.status() != WL_CONNECTED) {
